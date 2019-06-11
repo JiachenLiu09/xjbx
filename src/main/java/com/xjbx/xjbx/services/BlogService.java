@@ -10,8 +10,13 @@ import java.util.List;
 
 @Service
 public class BlogService {
+
+    private final BlogRepository blogRepository;
+
     @Autowired
-    BlogRepository blogRepository;
+    public BlogService(BlogRepository blogRepository) {
+        this.blogRepository = blogRepository;
+    }
 
     public void addBlog(Blog blog) {
         blogRepository.save(blog);

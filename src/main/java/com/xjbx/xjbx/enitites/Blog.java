@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.util.Date;
 
+@Table(name = "Tbl_blog")
 @Entity
 public class Blog {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bolgId;
 
     @Column(length = 20, nullable = false)
@@ -23,16 +24,28 @@ public class Blog {
     @JoinColumn(name="userId")
     private User user;
 
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "blogContentId", referencedColumnName = "blogContentId")
+    private BlogContent blogContent;
+
     public Blog() {
     }
 
-    public Blog(Integer bolgId, String blogTitle, Date createDate, Date modifiedDate, Integer traffic, User user) {
-        this.bolgId = bolgId;
+    public Blog(String blogTitle, Date createDate, Date modifiedDate, Integer traffic, User user, BlogContent blogContent) {
         this.blogTitle = blogTitle;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
         this.traffic = traffic;
         this.user = user;
+        this.blogContent = blogContent;
+    }
+
+    public BlogContent getBlogContent() {
+        return blogContent;
+    }
+
+    public void setBlogContent(BlogContent blogContent) {
+        this.blogContent = blogContent;
     }
 
     public Integer getBolgId() {

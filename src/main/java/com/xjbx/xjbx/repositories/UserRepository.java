@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findUserByUserName(String userName);
-    List<User> findAllByGender(String gender);
+    List<User> findAllByUserGender(String userGender);
     User findUserByUserNameAndUserPassword(String userName, String userPassword);
     void deleteUserByUserName(String userName);
     boolean existsUserByUserName(String userName);

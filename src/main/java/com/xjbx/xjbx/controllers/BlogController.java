@@ -1,7 +1,6 @@
 package com.xjbx.xjbx.controllers;
 
 import com.xjbx.xjbx.enitites.Blog;
-import com.xjbx.xjbx.enitites.User;
 import com.xjbx.xjbx.services.BlogService;
 import com.xjbx.xjbx.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,14 @@ import java.util.List;
 @RestController
 public class BlogController {
 
-    @Autowired
-    BlogService blogService;
+    private final BlogService blogService;
+    private final UserService userService;
 
     @Autowired
-    UserService userService;
+    public BlogController(UserService userService, BlogService blogService) {
+        this.userService = userService;
+        this.blogService = blogService;
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/blogs")
     public void addBlog(@RequestBody Blog blog) {

@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class UserService {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public void addUser(User user) {
         userRepository.save(user);
@@ -38,8 +42,8 @@ public class UserService {
         return users;
     }
 
-    public List<User> findAllUsersByGender(String gender) {
-        return userRepository.findAllByGender(gender);
+    public List<User> findAllUsersByUserGender(String userGender) {
+        return userRepository.findAllByUserGender(userGender);
     }
 
     public User userLogin(String userName, String userPassword) {

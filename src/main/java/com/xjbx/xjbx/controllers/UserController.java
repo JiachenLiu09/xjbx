@@ -10,8 +10,12 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users")
     public void addUser(@RequestBody User user) {
@@ -40,7 +44,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/{gender}")
     public List<User> findAllUsersByGender(@PathVariable String gender) {
-        return userService.findAllUsersByGender(gender);
+        return userService.findAllUsersByUserGender(gender);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/usersLogin")

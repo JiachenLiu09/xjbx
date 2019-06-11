@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Table(name = "Tbl_user")
 @Entity
 public class User {
 
@@ -19,8 +20,8 @@ public class User {
     private String userPassword;
 
     @Column(length = 10)
-    private String gender;
-    private Date userBirthday;
+    private String userGender;
+    private Date userDOB;
     private String userDescription;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -29,11 +30,11 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String userPassword, String gender, Date userBirthday, String userDescription, List<Blog> blogList) {
+    public User(String userName, String userPassword, String userGender, Date userDOB, String userDescription, List<Blog> blogList) {
         this.userName = userName;
         this.userPassword = userPassword;
-        this.gender = gender;
-        this.userBirthday = userBirthday;
+        this.userGender = userGender;
+        this.userDOB = userDOB;
         this.userDescription = userDescription;
         this.blogList = blogList;
     }
@@ -70,20 +71,20 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public String getGender() {
-        return gender;
+    public String getUserGenderr() {
+        return userGender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
     }
 
-    public Date getUserBirthday() {
-        return userBirthday;
+    public Date getUserDOB() {
+        return userDOB;
     }
 
-    public void setUserBirthday(Date userBirthday) {
-        this.userBirthday = userBirthday;
+    public void setUserDOB(Date userBirthday) {
+        this.userDOB = userBirthday;
     }
 
     public String getUserDescription() {
