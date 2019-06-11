@@ -1,0 +1,10 @@
+/users  (GET): return all users list;
+/users  (POST): add a user(need: User user);
+/users  (PUT): update a user(need: User user);
+/users/{username}  (DELETE): delete the user by username(need: username);
+/users/{username}  (GET): return the user by name;
+/users/{gender}  (GET): return all users list by gender;
+/usersLogin  (POST): loginfunction, if success, return the user, else return null;
+
+/blogs  (GET): return all blogs list;
+/blogs  (POST): add a blog(need: Blog blog)
