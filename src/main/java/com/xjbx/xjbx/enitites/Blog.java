@@ -1,6 +1,7 @@
 package com.xjbx.xjbx.enitites;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,8 +17,12 @@ public class Blog {
     @Column(length = 20, nullable = false)
     private String blogTitle;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyyMMddHHmmss")
     private Date createDate;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyyMMddHHmmss")
     private Date modifiedDate;
+
     private Integer traffic;
 
     @ManyToOne(optional = false)

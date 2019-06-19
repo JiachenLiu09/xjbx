@@ -1,5 +1,7 @@
 package com.xjbx.xjbx.enitites;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +23,10 @@ public class User {
 
     @Column(length = 10)
     private String userGender;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyyMMdd")
     private Date userDOB;
+
     private String userDescription;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
