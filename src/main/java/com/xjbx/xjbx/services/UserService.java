@@ -50,4 +50,8 @@ public class UserService {
         return userRepository.findUserByUserNameAndUserPassword(userName, userPassword);
     }
 
+    public boolean hasUser(String userName) {
+        return userRepository.findUserByUserName(userName)!=null;
+    }
+
 }
