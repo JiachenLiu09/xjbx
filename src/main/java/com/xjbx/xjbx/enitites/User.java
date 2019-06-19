@@ -27,16 +27,31 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Blog> blogList;
 
+    private String userAvatar;
+
     public User() {
     }
 
-    public User(String userName, String userPassword, String userGender, Date userDOB, String userDescription, List<Blog> blogList) {
+    public User(String userName, String userPassword, String userGender, Date userDOB, String userDescription, List<Blog> blogList, String userAvatar) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userGender = userGender;
         this.userDOB = userDOB;
         this.userDescription = userDescription;
         this.blogList = blogList;
+        this.userAvatar = userAvatar;
+    }
+
+    public String getUserGender() {
+        return userGender;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
     public List<Blog> getBlogList() {
